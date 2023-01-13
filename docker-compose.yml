@@ -3,7 +3,7 @@ services:
   main:
     container_name: weighingTest1
     build: .
-    command: 'composer install'
+    command: 'composer update'
     volumes:
       - ./WeighingSystem:/var/www/html
     ports:
