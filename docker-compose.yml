@@ -3,8 +3,9 @@ services:
   main:
     container_name: weighingTest1
     build: .
-    command: 'composer update'
     volumes:
       - ./WeighingSystem:/var/www/html
+    working_dir: /var/www/html
+    command: composer update
     ports:
       - 9000:80
