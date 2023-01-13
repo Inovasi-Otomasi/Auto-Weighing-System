@@ -1,0 +1,9 @@
+services:
+
+  main:
+    container_name: laravel-app-test6
+    build: .
+    volumes:
+      - ./laravel-app-test:/var/www/html
+    ports:
+      - 9000:80
