@@ -6,6 +6,6 @@ services:
     volumes:
       - ./WeighingSystem:/var/www/html
     working_dir: /var/www/html
-    command: composer update
+    command: 'composer update'
     ports:
       - 9000:80
