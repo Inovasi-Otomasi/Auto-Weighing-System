@@ -28,7 +28,7 @@ RUN apt-get update -y && apt-get install -y \
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN docker-php-ext-install pdo pdo_mysql sockets zip
+RUN docker-php-ext-install pdo pdo_mysql sockets
 RUN curl -sS https://getcomposer.org/installer​ | php -- \
      --install-dir=/usr/local/bin --filename=composer
 
@@ -38,4 +38,5 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN docker-php-ext-install gettext intl pdo_mysql gd
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-install zip
 RUN docker-php-ext-configure --enable-zip
