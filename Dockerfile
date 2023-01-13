@@ -12,7 +12,7 @@ RUN chown -R www-data:www-data /var/www
 RUN a2enmod rewrite
 
 # Linux Library
-RUN apt-get update -y && apt-get install -y \
+RUN apt-get update -y && apt-get install \
     libicu-dev \
     libmariadb-dev \
     unzip zip \
@@ -23,7 +23,7 @@ RUN apt-get update -y && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libzip-dev \
-    zip \
+    zip -y
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -39,4 +39,4 @@ RUN docker-php-ext-install gettext intl pdo_mysql gd
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install zip
-RUN docker-php-ext-configure --enable-zip
+# RUN docker-php-ext-configure --enable-zip
