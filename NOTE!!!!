@@ -1,6 +1,6 @@
 ######MYSQL########
 # Pake official image lsg
-docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=sangatrahasia -d --restart unless-stopped mysql:latest
+docker run --name some-mysql -p 33069:3306 -e MYSQL_ROOT_PASSWORD=sangatrahasia -d --restart unless-stopped mysql:latest
 # Buat user baru untuk remote access
 
 
@@ -9,5 +9,4 @@ docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=sangatrahasia -d --restart u
 docker build -t wololo:1.0 .
 
 # Run container
-docker run -itd -p random:80 --restart unless-stopped wololo:1.0
-
+docker run -itd -p 9000:80 --restart unless-stopped -v html-data:/var/www/html wololo:1.0
